@@ -6,7 +6,9 @@ This document describes how to run the main experiments in the [SOSP '24](https:
 
 ### Hardware Setup
 
-We have tested Apparate on CPU nodes on Cloudlab. We will provide more instructions on accessing a Cloudlab node soon.
+We have tested Apparate on CPU nodes on Cloudlab. 
+
+> Artifact evaluators: Hello! Right now, please resort to your own compute resources for reproducing our results -- in theory, any Linux machine should be able to run our code. We will provide more instructions on accessing a Cloudlab node soon.
 
 ### Software Dependencies
 
