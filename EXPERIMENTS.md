@@ -10,7 +10,7 @@ We have tested Apparate on CPU nodes on Cloudlab. We will provide more instructi
 
 ### Downloading Data
 
-For ease and speed of reproduction, we provide a simulator that replays request arrival traces on CPUs. The simulator implements all core logic in our system. Alongside the simulator, we also provide picked data of requests in our workloads. Due to the size of these pickle files, we compress them (~435M) and host them on Google Drive and they can be downloaded via utilities like `gdown`.
+For ease and efficiency of reproduction, we provide a simulator that replays request arrival traces on CPUs. The simulator implements all core logic in our system. Alongside the simulator, we also provide picked data of requests in our workloads. Due to the size of these pickle files, we compress them (~435M) and host them on Google Drive and they can be downloaded via utilities like `gdown`.
 
 ```bash
 mkdir apparate-ae; cd apparate-ae
@@ -38,7 +38,7 @@ pip install -r scheduler/requirements.txt
 cd scheduler; make
 ```
 
-### Sanity Check
+### Directory Structure
 
 Once all the dependencies has been set up, the directory should have the following structure:
 
@@ -53,9 +53,18 @@ Once all the dependencies has been set up, the directory should have the followi
   --simulation_pickles
 ```
 
+- `batch_decisions`: Contains the batching decisions of Clockwork using different models and request arrival traces. 
+  - Format: `{model_name}_1_fixed_30.pickle` for 30FPS video traces (CV workloads), and `{model_name}_azure.pickle` for Microsoft Azure MAF traces (NLP workloads).
+- `{bootstrap,simulation}_pickles`: Contains the confidence and accuracy of the bootstrapping/simulation dataset at all EE ramps.
+  - Format: `{bootstrap,simulation}_{dataset}_{model_name}.pickle`. The pickled object `p` is a dict with two keys: "conf" and "acc". The confidence/accuracy of sample i at ramp r can be accessed via: `p["conf"/"acc"][r][i]`.
+- `optimal_latency`: Contains the per-sample optimal latency for different workloads.
+  - Format: `{model_name}_{dataset}_optimal.pickle`. The pickled object is a list of floats, with each one denoting the queuing delay + optimal model inference latency of a request.
+- `profile_pickles_bs`: Contains the operator-level latency profile of different models at different batch sizes, all measured on an NVIDIA RTX A6000 GPU.
+  - Format: `{model_name}_{batch_size}_profile.pickle` for vanilla models, and `{model_name}_{batch_size}_earlyexit_profile.pickle` for EE models.
+
 ## Reproducing Experiments
 
-First, cd into the apparate-ae directory: `cd apparate-ae`.
+First, cd into the apparate-ae directory with the source code: `cd apparate-ae`.
 
 To reproduce the CV main results in Fig. 12 and 13, run `python run_cv.py` (takes ~10-20 minutes on a 32-core CPU). To reproduce the NLP main results in Fig. 14, run `python run_nlp.py` (takes ~xxx minutes on a 32-core CPU).
 
