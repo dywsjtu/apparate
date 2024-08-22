@@ -79,15 +79,11 @@ for model in models:
         serving_time_vanilla = results["serving_time_vanilla"]
         serving_time_ee = results["serving_time_ee"]
         
-        #### p95
-        # FIXME: something wrong with the plotting script??
         all_apparate_p95.append(np.percentile(serving_time_ee, 95))
         all_vanilla_p95.append(np.percentile(serving_time_vanilla, 95))
-        ####
     latency_dict["Apparate"].append(np.median(all_apparate_p95))
     latency_dict["Vanilla"].append(np.median(all_vanilla_p95))
     
-    # FIXME direction is wrong??
     latency_minmax_dict["Apparate"].append([
         np.median(all_apparate_p95) - min(all_apparate_p95),
         max(all_apparate_p95) - np.median(all_apparate_p95),
@@ -121,16 +117,11 @@ for scheme_idx, (scheme_name, all_p95) in enumerate(latency_dict.items()):
     # ax.bar_label(rects, padding=2, fontsize=9, color="#666666")
     multiplier += 1
 
-# ax.set_yscale("log")
-# ax.set_ylabel('Med. Latency Wins\nvs. Vanilla (%)', fontsize=13)
 ax.set_ylabel('P95 Latency (ms)', fontsize=13)
 ax.set_xticks(x_pos + bar_width * 0.5, models, fontsize=13)
-# plt.setp(ax.get_xticklabels(), rotation=15, ha="center")
-# ax.set_ylim(0, 25)
 ax.legend(loc='upper center', bbox_to_anchor=(0.5, 1.3), ncols=2, fontsize=10)
 ax.set_axisbelow(True)  # puts the grid below the bars
 ax.grid(color='lightgrey', linestyle='dashed', axis="both", linewidth=0.8)
 
-# fig.savefig(f'cv_results_median.png', bbox_inches='tight', dpi=500)
 fig.savefig(f'cv_results_p95.pdf', bbox_inches='tight', dpi=500)
 # %%

@@ -6,37 +6,30 @@ This document describes how to run the main experiments in the [SOSP '24](https:
 
 ### Hardware Setup
 
-We have tested Apparate on CPU nodes on Cloudlab. We will provide more instructions on obtaining
+We have tested Apparate on CPU nodes on Cloudlab. We will provide more instructions on accessing a Cloudlab node soon.
+
+### Software Dependencies
+
+For ease of reproduction, we use conda to create a virtual environment (Miniconda can be installed by following the instructions in [this doc](https://docs.anaconda.com/miniconda/miniconda-install/)).
+
+We have prepared an `environment.yml` file that lists the dependencies and the versions of the dependencies. Once conda has been installed, create an environment from the .yml file by following the instructions in [this doc](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file).
+
 
 ### Downloading Data
 
-For ease and efficiency of reproduction, we provide a simulator that replays request arrival traces on CPUs. The simulator implements all core logic in our system. Alongside the simulator, we also provide picked data of requests in our workloads. Due to the size of these pickle files, we compress them (~435M) and host them on Google Drive and they can be downloaded via utilities like `gdown`.
+For ease and efficiency of reproduction, we provide a simulator that replays request arrival traces on CPUs. The simulator implements all core logic in our system. Alongside the simulator, we also provide pickled data of requests in our workloads. Due to the size of these pickle files, we compress them (~435M) and host them on Google Drive and they can be downloaded via `gdown`.
 
 ```bash
 mkdir apparate-ae; cd apparate-ae
-pip install gdown
+pip install gdown  # only do this if the previous step hasn't finished
 # download the tar file
 gdown --fuzzy 'https://drive.google.com/file/d/1EN6ciNDBL2dEzSW4qdUTc9t4vOYkzWD8/view?usp=sharing'
 # uncompress the tar file
-tar -xzvf apparate-data.tar.gz
-rm apparate-data.tar.gz
+tar -xzvf apparate-data.tar.gz && rm apparate-data.tar.gz
 # clone this repo
 git clone https://github.com/dywsjtu/apparate-ae.git
 ```
 
-
-### Software Dependencies
-
-Prob just use conda?
-Python can be installed using [Miniconda](https://docs.conda.io/en/latest/miniconda.html).
-
-Required software dependencies can be installed using:
-
-```bash
-apt-get -y install cmake g++ gcc libnuma-dev make numactl zlib1g-dev
-pip install -r scheduler/requirements.txt
-cd scheduler; make
-```
 
 ### Directory Structure
 
@@ -74,4 +67,6 @@ Running the above scripts will also produce pickle files that contain detailed, 
 
 ## Plotting Results
 
-TODO
+- Fig. 12: Run `plot_cv_results_median.py` to plot the median latency wins (%) compared to vanilla inference.
+- Fig. 13: Run `plot_cv_results_p95.py` to plot the tail latency (ms) of Apparate and vanilla inference.
+- TODO: clean up NLP plotting script
