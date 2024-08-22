@@ -6,7 +6,7 @@ This document describes how to run the main experiments in the [SOSP '24](https:
 
 ### Hardware Setup
 
-We have tested Apparate on CPU nodes on Cloudlab. TODO.
+We have tested Apparate on CPU nodes on Cloudlab. We will provide more instructions on obtaining
 
 ### Downloading Data
 
@@ -44,10 +44,10 @@ Once all the dependencies has been set up, the directory should have the followi
 
 ```
 --apparate-ae
-  --apparate-ae
+  --apparate-ae (this repo)
   --apparate_latency (this will be populated in the next step for plotting)
-  --batch_decisions
-  --bootstrap_pickles
+  --batch_decisions (downloaded from Google Drive and decompressed)
+  --bootstrap_pickles (...)
   --optimal_latency
   --profile_pickles_bs
   --simulation_pickles
