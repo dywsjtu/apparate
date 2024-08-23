@@ -14,12 +14,12 @@ models = ["ResNet18", "ResNet50", "ResNet101", "VGG11", "VGG13", "VGG16"]
 datasets = ["Auburn", "Bellevue1", "Bellevue2", "Calgary", "Coral", "Hampton", "Oxford"]
 
 # NOTE(ruipan): use these for the final version. use the abs path here for testing.
-# BATCH_DECISION_PATH = "../../batch_decisions/{model}_{slo_multiplier}_{arrival}.pickle"
-# APPARATE_LATENCY_PATH = "../../apparate_latency/{model}_{dataset}_{slo_multiplier}_{arrival}.pickle"
-# OPTIMAL_LATENCY_PATH = "../../optimal_latency/{model}_{dataset}_{slo_multiplier}_{arrival}_optimal.pickle"
-BATCH_DECISION_PATH = "/home/ruipan/apparate-ae/data/batch_decisions/{model}_{slo_multiplier}_{arrival}.pickle"
-APPARATE_LATENCY_PATH = "/home/ruipan/apparate-ae/data/apparate_latency/{model}_{dataset}_{slo_multiplier}_{arrival}.pickle"
-OPTIMAL_LATENCY_PATH = "/home/ruipan/apparate-ae/data/optimal_latency/{model}_{dataset}_{slo_multiplier}_{arrival}_optimal.pickle"
+BATCH_DECISION_PATH = "../../batch_decisions/{model}_{slo_multiplier}_{arrival}.pickle"
+APPARATE_LATENCY_PATH = "../../apparate_latency/{model}_{dataset}_{slo_multiplier}_{arrival}.pickle"
+OPTIMAL_LATENCY_PATH = "../../optimal_latency/{model}_{dataset}_{slo_multiplier}_{arrival}_optimal.pickle"
+# BATCH_DECISION_PATH = "/home/ruipan/apparate-ae/data/batch_decisions/{model}_{slo_multiplier}_{arrival}.pickle"
+# APPARATE_LATENCY_PATH = "/home/ruipan/apparate-ae/data/apparate_latency/{model}_{dataset}_{slo_multiplier}_{arrival}.pickle"
+# OPTIMAL_LATENCY_PATH = "/home/ruipan/apparate-ae/data/optimal_latency/{model}_{dataset}_{slo_multiplier}_{arrival}_optimal.pickle"
 
 bar_width = 0.3  # the width of the bars
 x_pos = np.arange(len(models))

@@ -6,12 +6,12 @@ import numpy as np
 from plotting_utils import parse_result_file, values_to_cdf
 
 # NOTE(ruipan): use these for the final version. use the abs path here for testing.
-# BATCH_DECISION_PATH = "../../batch_decisions/{model}_{arrival}.pickle"
-# APPARATE_LATENCY_PATH = "../../apparate_latency/{model}_{dataset}_{arrival}.pickle"
-# OPTIMAL_LATENCY_PATH = "../../optimal_latency/{model}_{dataset}_{arrival}_optimal.pickle"
-BATCH_DECISION_PATH = "/home/ruipan/apparate-ae/data/batch_decisions/{model}_{arrival}.pickle"
-APPARATE_LATENCY_PATH = "/home/ruipan/apparate-ae/data/apparate_latency/{model}_{dataset}_{arrival}.pickle"
-OPTIMAL_LATENCY_PATH = "/home/ruipan/apparate-ae/data/optimal_latency/{model}_{dataset}_optimal.pickle"
+BATCH_DECISION_PATH = "../../batch_decisions/{model}_{arrival}.pickle"
+APPARATE_LATENCY_PATH = "../../apparate_latency/{model}_{dataset}_{arrival}.pickle"
+OPTIMAL_LATENCY_PATH = "../../optimal_latency/{model}_{dataset}_{arrival}_optimal.pickle"
+# BATCH_DECISION_PATH = "/home/ruipan/apparate-ae/data/batch_decisions/{model}_{arrival}.pickle"
+# APPARATE_LATENCY_PATH = "/home/ruipan/apparate-ae/data/apparate_latency/{model}_{dataset}_{arrival}.pickle"
+# OPTIMAL_LATENCY_PATH = "/home/ruipan/apparate-ae/data/optimal_latency/{model}_{dataset}_optimal.pickle"
 
 
 matplotlib.rcParams["figure.figsize"] = (4, 2)  # (4, 1.3)
