@@ -8,7 +8,7 @@ This document describes how to run the main experiments in the [SOSP '24](https:
 
 We have tested Apparate on CPU nodes on Cloudlab. 
 
-> Artifact evaluators: Hello! Right now, please resort to your own compute resources for reproducing our results -- in theory, any Linux machine should be able to run our code. We will provide more instructions on accessing a Cloudlab node soon.
+> Artifact evaluators: Hello! In theory, our source code should be runnable on any Linux machine. If you want access to Cloudlab, please send your public key to ruipan@princeton.edu and we will set up a Cloudlab node for you to reproduce our experiments.
 
 ### Software Dependencies
 
@@ -16,22 +16,36 @@ For ease of reproduction, we use conda to create a virtual environment (Minicond
 
 We have prepared an `environment.yml` file that lists the dependencies and the versions of the dependencies. Once conda has been installed, create an environment from the .yml file by following the instructions in [this doc](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file).
 
+```bash
+mkdir apparate-ae; cd apparate-ae
+# clone this repo
+git clone https://github.com/dywsjtu/apparate-ae.git
+conda env create -f ./apparate-ae/environment.yml
+conda activate apparate_ae
+```
 
 ### Downloading Data
 
 For ease and efficiency of reproduction, we provide a simulator that replays request arrival traces on CPUs. The simulator implements all core logic in our system. Alongside the simulator, we also provide pickled data of requests in our workloads. Due to the size of these pickle files, we compress them (~435M) and host them on Google Drive and they can be downloaded via `gdown`.
 
 ```bash
-mkdir apparate-ae; cd apparate-ae
-pip install gdown  # only do this if the previous step was skipped
+# install gdown to download the file
+# NOTE: gdown is already included in the conda environments. The following only needs to be done
+# in case the gdown command runs into a "Permission Denied" issue.
+# See https://github.com/wkentaro/gdown/issues/43#issuecomment-621356443 for more details.
+pip install -U --no-cache-dir gdown --pre
+
 # download the tar file
 gdown --fuzzy 'https://drive.google.com/file/d/1EN6ciNDBL2dEzSW4qdUTc9t4vOYkzWD8/view?usp=sharing'
+
 # uncompress the tar file
 tar -xzvf apparate-data.tar.gz && rm apparate-data.tar.gz
-# clone this repo
-git clone https://github.com/dywsjtu/apparate-ae.git
-# create the directory for storing experiment output
+
+# create the directory for storing pickled experiment output
 mkdir apparate_latency
+
+# create the directory for stroing output logs
+cd apparate-ae; mkdir logs
 ```
 
 
