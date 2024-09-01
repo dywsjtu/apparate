@@ -1,7 +1,7 @@
 # Apparate: Rethinking Early Exits to Tame Latency-Throughput Tensions in ML Serving
 
 This repository contains the source code implementation of the [SOSP '24](https://sigops.org/s/conferences/sosp/2024/) paper [Apparate: Rethinking Early Exits to Tame Latency-Throughput Tensions in ML Serving](https://arxiv.org/abs/2312.05385). 
-#### Note that the arxiv version is not up to date to our SOSP submission, we will update the arxiv paper after camera ready.
+#### Please note that the arXiv version is not up to date with our SOSP submission. We will update the arXiv paper once the camera-ready version is finalized.
 
 ## Getting Started
 
