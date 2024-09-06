@@ -15,7 +15,7 @@ import plotting
 import argparse
 from batch_systems import *
 from load_models import load_model
-from dataloader.data_loaders import load_data
+# from dataloader.data_loaders import load_data
 from utils import set_seeds, get_batch, parse_profile
 from utils import get_queuing_delay, get_ramp_latencies, get_remaining_rate
 from utils import serve_batch, tune_threshold, earlyexit_inference, get_optimal_exitable_ramps
