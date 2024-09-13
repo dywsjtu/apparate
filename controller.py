@@ -780,8 +780,8 @@ class Controller():
 
         average_latency_improvement = 100 * np.mean((self._all_vanilla_latencies - all_serving_latencies) / self._all_vanilla_latencies) 
 
-        if self.nlp:
-            self.plot_latency_cdfs()
+        # if self.nlp:
+        #     self.plot_latency_cdfs()
 
         self._logger.info(
             f"[{self._args.arch}, {self._args.dataset}]: Serving with complete, overall accuracy {overall_accuracy}%, "
