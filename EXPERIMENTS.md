@@ -19,8 +19,8 @@ We have prepared an `environment.yml` file that lists the dependencies and the v
 ```bash
 mkdir apparate-ae; cd apparate-ae
 # clone this repo
-git clone https://github.com/dywsjtu/apparate-ae.git
-conda env create -f ./apparate-ae/environment.yml
+git clone https://github.com/dywsjtu/apparate.git
+conda env create -f ./apparate/environment.yml
 conda activate apparate_ae
 ```
 
@@ -45,7 +45,7 @@ tar -xzvf apparate-data.tar.gz && rm apparate-data.tar.gz
 mkdir apparate_latency
 
 # create the directory for stroing output logs
-cd apparate-ae; mkdir logs
+cd apparate; mkdir logs
 ```
 
 
@@ -55,7 +55,7 @@ Once all the dependencies has been set up, the directory should have the followi
 
 ```
 --apparate-ae
-  --apparate-ae (this repo)
+  --apparate (this repo)
   --apparate_latency (empty, will be populated in the next step for plotting)
   --batch_decisions (downloaded from Google Drive and decompressed)
   --bootstrap_pickles (...)
@@ -75,7 +75,7 @@ Once all the dependencies has been set up, the directory should have the followi
 
 ## Reproducing Experiments
 
-First, cd into the apparate-ae directory with the source code: `cd apparate-ae`.
+First, cd into the apparate directory with the source code: `cd apparate`.
 
 To reproduce the CV main results in Fig. 12 and 13, run `python run_cv.py` (takes ~10-30 minutes on a 32-core CPU). To reproduce the NLP main results in Fig. 14, run `python run_nlp.py` (takes ~xxx minutes on a 32-core CPU).
 
