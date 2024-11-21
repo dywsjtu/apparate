@@ -1,5 +1,5 @@
 # modified from https://github.com/huggingface/transformers/blob/v4.28.1/src/transformers/models/llama/modeling_llama.py
-
+# and adapts the parallel decoding from https://github.com/raymin0223/fast_robust_early_exit
 # coding=utf-8
 # Copyright 2022 EleutherAI and the HuggingFace Inc. team. All rights reserved.
 #
@@ -27,6 +27,7 @@ from typing import List, Optional, Tuple, Union
 import torch
 import torch.distributed as dist
 import torch.utils.checkpoint
+from llama_ee_utils import BetaMixture1D, get_skip_mask
 from torch import nn
 from torch.nn import BCEWithLogitsLoss, CrossEntropyLoss, MSELoss
 from transformers.activations import ACT2FN
@@ -51,8 +52,6 @@ from transformers.utils import (
     logging,
     replace_return_docstrings,
 )
-
-from lm_eval.models.bmm import BetaMixture1D, get_skip_mask
 
 GreedySearchOutput = Union[
     GreedySearchEncoderDecoderOutput, GreedySearchDecoderOnlyOutput
